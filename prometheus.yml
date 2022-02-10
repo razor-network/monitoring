@@ -21,6 +21,9 @@ scrape_configs:
       - targets: ["nodeexporter:9100"]
         labels:
           instance: "app"
-      - targets: ["35.223.158.203:9100"]
+  - job_name: "razor-go"
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["104.197.252.116:2112"]
         labels:
-          instance: "staker"
+          instance: "app"
