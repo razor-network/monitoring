@@ -1,0 +1,95 @@
+version: "3.5"
+services:
+  victoriametrics:
+    container_name: victoriametrics
+    image: victoriametrics/victoria-metrics
+    volumes:
+      - ./vmdata:/storage
+    command:
+      - "--storageDataPath=/storage"
+      - "--httpListenAddr=:8428"
+    restart: always
+    networks:
+      - vm_net
+  vmagent:
+    container_name: vmagent
+    image: victoriametrics/vmagent
+    depends_on:
+      - "victoriametrics"
+    volumes:
+      - ./vmagentdata:/vmagentdata
+      - ./configs/prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - "--promscrape.config=/etc/prometheus/prometheus.yml"
+      - "--remoteWrite.url=http://victoriametrics:8428/api/v1/write"
+    networks:
+      - vm_net
+    restart: always
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:8.0.0
+    depends_on:
+      - "victoriametrics"
+    ports:
+      - 3000:3000
+    user: "472"
+    volumes:
+      - ./grafanadata:/var/lib/grafana
+      - ./provisioning/:/etc/grafana/provisioning/
+      - ./dashboards/:/var/lib/grafana/dashboards/
+    networks:
+      - vm_net
+    restart: always
+  ################################# Server Exporter
+  cadvisor:
+    image: google/cadvisor
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
+    restart: unless-stopped
+    networks:
+      - vm_net
+  nodeexporter:
+    image: prom/node-exporter
+    container_name: nodeexporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - "--path.procfs=/host/proc"
+      - "--path.rootfs=/rootfs"
+      - "--path.sysfs=/host/sys"
+      - "--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)"
+      - "--collector.systemd"
+      - "--collector.textfile.directory=/rootfs/var/tmp"
+    restart: unless-stopped
+    networks:
+      - vm_net
+
+  ################################ logging
+  loki:
+    image: grafana/loki:2.0.0
+    container_name: loki
+    command: -config.file=/etc/loki/loki.yaml
+    volumes:
+      - ./configs/loki.yaml:/etc/loki/loki.yaml
+    restart: unless-stopped
+    networks:
+      - vm_net
+  promtail:
+    image: grafana/promtail:2.0.0
+    container_name: promtail
+    volumes:
+      - ./configs/promtail.yaml:/etc/promtail/config.yml
+      - $HOME/.razor/:/var/log/razor/
+    command: -config.file=/etc/promtail/config.yml
+    networks:
+      - vm_net
+networks:
+  vm_net:

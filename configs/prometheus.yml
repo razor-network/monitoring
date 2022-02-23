@@ -1,0 +1,29 @@
+global:
+  scrape_interval: 10s
+
+scrape_configs:
+  - job_name: "vmagent"
+    static_configs:
+      - targets: ["vmagent:8429"]
+  - job_name: "victoriametrics"
+    static_configs:
+      - targets: ["victoriametrics:8428"]
+  - job_name: "cadvisor"
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["cadvisor:8080"]
+        labels:
+          instance: "app"
+          environment: "app"
+  - job_name: "node-exporter"
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["nodeexporter:9100"]
+        labels:
+          instance: "app"
+  - job_name: "razor-go"
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["razor-go:2112"]
+        labels:
+          instance: "app"
