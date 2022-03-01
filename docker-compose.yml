@@ -24,7 +24,7 @@ services:
       - "--remoteWrite.url=http://victoriametrics:8428/api/v1/write"
     networks:
       - vm_net
-      # - razor_network 
+      - razor_network 
 
     restart: always
 
@@ -95,5 +95,5 @@ services:
       - vm_net
 networks:
   vm_net:
-  # razor_network:
-  #   external: true
+  razor_network:
+    external: true

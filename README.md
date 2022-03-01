@@ -10,6 +10,10 @@ We are using
 5. [node-exporter](https://prometheus.io/docs/guides/node-exporter/): node-exporter provide host based metrics to Victoria scraper
 6. [caAdvisor](https://prometheus.io/docs/guides/cadvisor/): caAdvisor provide containers based metrics to Victoria scraper
 
+
+Before running the monitoring stack, you should have staker up and running with `razor_network`, razor_network is a docker based bridge network through which staker and monitoring stack communicate securely without exposing anything publicly.
+
+
 You can spin all agents at once via 
  
 ```
@@ -27,18 +31,4 @@ docker-compose ps
  You can open grafana at `localhost:3000`, and get 
  1. Insight of host metrics at `Node Exporter Full` dashboard
  2. Containers Insight at `Docker and OS metrics ( cadvisor, node_exporter )` dashboard
- 3. To get insight of your staker, first you need to expose metrics, and few things need to update in docker-compose.yml 
-    1. In vmagent service uncomment 
-        ```
-        - razor_network
-        ```
-    2. At networks section uncomment
-        ```
-        razor_network:
-        external: true
-        ```
-    3. Can run, to update stack
-        ```
-        docker-compose up -d
-        ```
-        Now can checkout `Razor` dashboard to monitor your staker
+ 3. Can checkout `Razor` dashboard to monitor your staker
