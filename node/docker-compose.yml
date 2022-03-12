@@ -1,0 +1,38 @@
+version: "3.5"
+services:
+  nodeexporter:
+    image: prom/node-exporter
+    container_name: nodeexporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - "--path.procfs=/host/proc"
+      - "--path.rootfs=/rootfs"
+      - "--path.sysfs=/host/sys"
+      - "--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)"
+      - "--collector.systemd"
+      - "--collector.textfile.directory=/rootfs/var/tmp"
+    restart: unless-stopped
+
+  promtail:
+    image: grafana/promtail:2.0.0
+    container_name: promtail
+    ports:
+      - 9080:9080
+    volumes:
+      - ./promtail.yaml:/etc/promtail/config.yml
+      - ./logs:/var/log/razor
+    command: -config.file=/etc/promtail/config.yml
+
+  cadvisor:
+    image: google/cadvisor
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+      - /cgroup:/cgroup:ro #doesn't work on MacOS only for Linux
+    restart: unless-stopped
