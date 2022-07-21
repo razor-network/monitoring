@@ -89,7 +89,7 @@ services:
     container_name: promtail
     volumes:
       - ./configs/promtail.yaml:/etc/promtail/config.yml
-      - $HOME/.razor/:/var/log/razor/
+      - $HOME/.razor/log/:/var/log/razor/
     command: -config.file=/etc/promtail/config.yml
     networks:
       - vm_net
