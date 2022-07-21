@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1658385161790,
+  "iteration": 1658400359087,
   "links": [],
   "panels": [
     {
@@ -940,7 +940,11 @@
         "handler": 1,
         "name": "Error Counts in 1min alert",
         "noDataState": "no_data",
-        "notifications": []
+        "notifications": [
+          {
+            "uid": "N1Fb9xR4k"
+          }
+        ]
       },
       "datasource": "Loki",
       "fieldConfig": {
@@ -1166,5 +1170,5 @@
   "timezone": "",
   "title": "Razor",
   "uid": "9pdAusBnk",
-  "version": 1
+  "version": 3
 }
