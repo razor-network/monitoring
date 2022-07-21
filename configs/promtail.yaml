@@ -15,6 +15,5 @@ scrape_configs:
         - localhost
       labels:
         job: razor-go
-        user: "1"
         __path__: "/var/log/razor/*.log"
 

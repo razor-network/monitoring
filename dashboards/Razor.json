@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1658400359087,
+  "iteration": 1658401126963,
   "links": [],
   "panels": [
     {
@@ -1006,7 +1006,10 @@
       "id": 36,
       "options": {
         "legend": {
-          "calcs": [],
+          "calcs": [
+            "max",
+            "sum"
+          ],
           "displayMode": "list",
           "placement": "bottom"
         },
@@ -1170,5 +1173,5 @@
   "timezone": "",
   "title": "Razor",
   "uid": "9pdAusBnk",
-  "version": 3
+  "version": 4
 }
