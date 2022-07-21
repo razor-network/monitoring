@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1658434136168,
+  "iteration": 1658436212697,
   "links": [],
   "panels": [
     {
@@ -939,7 +939,7 @@
         "frequency": "1m",
         "handler": 1,
         "name": "Error Counts in 1min alert",
-        "noDataState": "ok",
+        "noDataState": "keep_state",
         "notifications": [
           {
             "uid": "N1Fb9xR4k"
@@ -1173,5 +1173,5 @@
   "timezone": "",
   "title": "Razor",
   "uid": "9pdAusBnk",
-  "version": 5
+  "version": 6
 }
