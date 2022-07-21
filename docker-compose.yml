@@ -35,7 +35,7 @@ services:
       - "victoriametrics"
     ports:
       - 3000:3000
-    user: "472"
+    user: "0"
     volumes:
       - ./grafanadata:/var/lib/grafana
       - ./provisioning/:/etc/grafana/provisioning/
