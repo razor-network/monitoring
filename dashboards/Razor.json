@@ -15,9 +15,91 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1658436212697,
+  "iteration": 1658468361767,
   "links": [],
   "panels": [
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 38,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(rate(container_cpu_usage_seconds_total{name=~\".+\", image=~\"razornetwork.+\"}[5m])) by (name) * 100",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "{{name}}",
+          "refId": "A"
+        }
+      ],
+      "title": "razor-go Container CPU Usage",
+      "type": "timeseries"
+    },
     {
       "datasource": null,
       "fieldConfig": {
@@ -47,7 +129,7 @@
         "h": 3,
         "w": 4,
         "x": 0,
-        "y": 0
+        "y": 8
       },
       "id": 30,
       "options": {
@@ -107,7 +189,7 @@
         "h": 3,
         "w": 5,
         "x": 4,
-        "y": 0
+        "y": 8
       },
       "id": 32,
       "options": {
@@ -145,7 +227,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 3
+        "y": 11
       },
       "id": 2,
       "panels": [],
@@ -188,7 +270,7 @@
         "h": 5,
         "w": 3,
         "x": 0,
-        "y": 4
+        "y": 12
       },
       "id": 4,
       "options": {
@@ -252,7 +334,7 @@
         "h": 5,
         "w": 3,
         "x": 3,
-        "y": 4
+        "y": 12
       },
       "id": 6,
       "options": {
@@ -316,7 +398,7 @@
         "h": 5,
         "w": 3,
         "x": 6,
-        "y": 4
+        "y": 12
       },
       "id": 16,
       "options": {
@@ -375,7 +457,7 @@
         "h": 5,
         "w": 4,
         "x": 9,
-        "y": 4
+        "y": 12
       },
       "id": 10,
       "options": {
@@ -434,7 +516,7 @@
         "h": 5,
         "w": 3,
         "x": 13,
-        "y": 4
+        "y": 12
       },
       "id": 12,
       "options": {
@@ -493,7 +575,7 @@
         "h": 5,
         "w": 4,
         "x": 16,
-        "y": 4
+        "y": 12
       },
       "id": 14,
       "options": {
@@ -553,7 +635,7 @@
         "h": 5,
         "w": 4,
         "x": 20,
-        "y": 4
+        "y": 12
       },
       "id": 18,
       "options": {
@@ -598,7 +680,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 9
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 24,
@@ -764,7 +846,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 9
+        "y": 17
       },
       "hiddenSeries": false,
       "id": 26,
@@ -1001,7 +1083,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 17
+        "y": 25
       },
       "id": 36,
       "options": {
@@ -1041,7 +1123,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 33
       },
       "id": 20,
       "panels": [],
@@ -1055,7 +1137,7 @@
         "h": 8,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 34
       },
       "id": 28,
       "options": {
@@ -1082,7 +1164,7 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 42
       },
       "id": 22,
       "options": {
@@ -1173,5 +1255,5 @@
   "timezone": "",
   "title": "Razor",
   "uid": "9pdAusBnk",
-  "version": 6
+  "version": 7
 }
