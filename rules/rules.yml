@@ -2,7 +2,7 @@ groups:
   - name: razor-health
     rules:
       - alert: ServiceDown
-        expr: client_information{razor_go_version=~".+"} != 0
+        expr: client_information{razor_go_version=~".+"} == 0
         for: 2m
         labels:
           severity: critical
