@@ -1,0 +1,11 @@
+groups:
+  - name: razor-health
+    rules:
+      - alert: ServiceDown
+        expr: client_information{razor_go_version=~".+"} != 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Service {{ $labels.job }} is down on {{ $labels.instance }}"
+          description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 2 minutes."
