@@ -7,7 +7,7 @@ route:
 receivers:
   - name: 'web.hook'
     webhook_configs:
-      - url: 'http://127.0.0.1:5001/'
+      - url: 'https://maker.ifttt.com/trigger/razor/json/with/key/dSQWWFHunMl86OA__dhSk6Y1zSXfX2oR4H6_gYm51Fi'
 inhibit_rules:
   - source_match:
       severity: 'critical'
