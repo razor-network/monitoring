@@ -40,6 +40,14 @@ We are using
 - If your staker is running via binary, then 
     
     1. In `./configs/prometheus.yml`, replace `"razor-go:2112"` with `"<private/public address of host>:2112"`
+    2. You can spin all agents at once via 
+        
+        ```
+        docker-compose up -d
+        ``` 
+        Can check the status of each service via
+        ```
+        docker-compose ps
 
 - For alerting you can add webhook in `./configs/alertmanager.yml`, replace `http://127.0.0.1:5001/` with your webhook URL. This will send you an alert in every 5min if metrics stops.
  
