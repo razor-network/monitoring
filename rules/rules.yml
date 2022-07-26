@@ -11,7 +11,7 @@ groups:
           description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 2 minutes."
 
       - alert: MetricMissing
-        expr: absent(client_information{razor_go_version=~".+"}) == 1
+        expr: absent(client_information{razor_go_version=~".+"})
         for: 2m
         labels:
           severity: critical
