@@ -21,6 +21,12 @@ scrape_configs:
       - targets: ["nodeexporter:9100"]
         labels:
           instance: "app"
+  - job_name: "alertmanager"
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["alertmanager:9093"]
+        labels:
+          instance: "app"
   - job_name: "razor-go"
     scrape_interval: 5s
     static_configs:
