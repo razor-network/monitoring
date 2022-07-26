@@ -34,8 +34,6 @@ services:
       - ./configs/alertmanager.yml:/config/alertmanager.yml
     command:
       - "--config.file=/config/alertmanager.yml"
-    ports:
-      - 9093:9093
     networks:
       - vm_net
     restart: always
