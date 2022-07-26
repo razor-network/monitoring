@@ -1,4 +1,4 @@
-aggregation# Monitoring
+# Monitoring
 
 This repo contains the monitoring setup for [razor-go](https://github.com/razor-network/razor-go) staker along with the host in which it is running.
 
