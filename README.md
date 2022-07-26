@@ -46,6 +46,8 @@ We are using
     ```
 
 - You can open grafana at `localhost:3000`, and get 
-    1. Insight of host metrics at `Node Exporter Full` dashboard
-    2. Containers Insight at `Docker and OS metrics ( cadvisor, node_exporter )` dashboard
-    3. Can checkout `Razor` dashboard to monitor your staker
+    1. Can checkout `Razor` dashboard to monitor your staker.
+    2. Insight of host metrics at `Node Exporter Full` dashboard.
+    3. Containers Insight at `Docker and OS metrics ( cadvisor, node_exporter )` dashboard.
+    4. Can monitor alerts at `Alertmanager` dashboard.
+    
