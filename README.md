@@ -58,6 +58,6 @@ We are using
 1. In `docker-compose.yml` uncomment ports for `alertmanager` and `vmalert`.
 2. Configure firewall to allow access to ports `8880` and `9093`.
 
-3. Check you get alerts on vmalert via http://<host_address>:8880/vmalert/alerts. vmalert is configured to scrap in every 2min. 
+3. Check you get alerts on vmalert via `http://<host_address>:8880/vmalert/alerts`. vmalert is configured to scrap in every 2min. 
 
-4. If you see alert in vmalert then look into alertmanager http://<host_address>:9093/#/alerts?, if you see alerts in there but you didn't get one then probably you need to check your weebhook.
+4. If you see alert in vmalert then look into alertmanager `http://<host_address>:9093/#/alerts?`, if you see alerts in there but you didn't get one then probably you need to check your weebhook.
