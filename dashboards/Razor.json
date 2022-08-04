@@ -15,7 +15,7 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1658733142567,
+  "iteration": 1659606069128,
   "links": [],
   "panels": [
     {
@@ -69,7 +69,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "client_information",
+          "expr": "client_information{instance=\"$staker\"}",
           "interval": "",
           "legendFormat": "{{razor_go_version}} ",
           "refId": "A"
@@ -129,7 +129,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "client_information{}",
+          "expr": "client_information{instance=\"$staker\"}",
           "interval": "",
           "legendFormat": "{{go_version}}",
           "refId": "A"
@@ -998,6 +998,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisLabel": "",
             "axisPlacement": "left",
             "barAlignment": 0,
             "drawStyle": "line",
@@ -1352,6 +1353,33 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": "razor02",
+          "value": "razor02"
+        },
+        "datasource": null,
+        "definition": "label_values( client_information{job=\"razor-go\"}, instance)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Staker",
+        "multi": false,
+        "name": "staker",
+        "options": [],
+        "query": {
+          "query": "label_values( client_information{job=\"razor-go\"}, instance)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -1363,5 +1391,5 @@
   "timezone": "",
   "title": "Razor",
   "uid": "9pdAusBnk",
-  "version": 8
+  "version": 1
 }

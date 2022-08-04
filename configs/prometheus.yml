@@ -32,4 +32,4 @@ scrape_configs:
     static_configs:
       - targets: ["razor-go:2112"]
         labels:
-          instance: "app"
+          staker: "razor-01"
