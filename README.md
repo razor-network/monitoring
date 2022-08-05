@@ -33,7 +33,15 @@ We are using
 
 - For alerting you can add webhook in `./configs/alertmanager.yml`, replace `http://127.0.0.1:5001/` with your webhook URL. This will send you an alert in every 5min if metrics stops.
 
-
+- If you are running multiple stakers and want to monitor via single grafana dashboard
+    
+    1. You need to update `./config/prometheus.yml`, add new target block where `job_name: "razor-go"`
+        ```
+        - targets: ["<second-host-address>:2112"]
+          labels:
+            staker: "<staker-name>"
+        ```
+    2. Restart vmagent service `docker-compose restart vmagent`
 ### Start monitoring stack
 -  You can spin all agents at once via 
         
