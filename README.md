@@ -4,7 +4,7 @@ This repo contains the monitoring setup for [razor-go](https://github.com/razor-
 
 
 We are using
-1.  [Victoria Metrics](https://victoriametrics.com/): To scrap prometheus metrics form exporters.
+1. [Victoria Metrics](https://victoriametrics.com/): To scrap prometheus metrics form exporters.
 2. [Grafana](https://grafana.com/): For dashboard on metrics
 3. [loki](https://grafana.com/oss/loki/): Aggregate logs and provide to grafana.
 4. [promtail](https://grafana.com/docs/loki/latest/clients/promtail/):An agent which ships the contents of local logs
@@ -15,21 +15,22 @@ We are using
 
 ### Prerequisites 
 
-- You must have Docker and Docker Compose installed.
-- If you are running staker via docker and running on same host, then your staker should up and running with `razor_network` can refer [here](https://github.com/razor-network/razor-go/tree/v1-audit#docker-quick-start)
+- You must have Docker and Docker Compose installed to run monitoring stack.
 - You must expose razor-go metrics, can refer [here](https://github.com/razor-network/razor-go/tree/v1-audit#expose-metrics) 
 
 
 
->**_NOTE:_**  `razor_network` is a docker based bridge network through which staker and monitoring stack communicate securely without exposing anything publicly.
+>**_NOTE:_**  We highly recommend not to run monitoring stack on same host where your staker is running. So In case of any outage to your staker host your monitoring setup wont affect and you get proper alert.
 
 
 
 ### Configuration 
 
-- If your staker is running via binary, then 
+- Configure prometheus to scrap metrics from razor-go
     
-    1. In `./configs/prometheus.yml`, replace `"razor-go:2112"` with `"<private/public address of host>:2112"`
+    1. In `./configs/prometheus.yml`, Update `"<private/public address of host>:2112"` with your staker host address.
+
+>**_NOTE:_** For better security you can configure firewall on staker host to allow only monitoring Ip for port 2112 which can be done via `ufw` a linux utility or via network configuration of your host provider .
 
 - For alerting you can add webhook in `./configs/alertmanager.yml`, replace `http://127.0.0.1:5001/` with your webhook URL. This will send you an alert in every 5min if metrics stops.
 

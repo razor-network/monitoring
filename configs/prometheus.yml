@@ -30,6 +30,6 @@ scrape_configs:
   - job_name: "razor-go"
     scrape_interval: 5s
     static_configs:
-      - targets: ["razor-go:2112"]
+      - targets: ["<public/private address of host>:2112"]
         labels:
           staker: "razor-01"
